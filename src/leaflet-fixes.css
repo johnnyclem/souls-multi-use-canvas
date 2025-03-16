@@ -1,0 +1,21 @@
+/* Leaflet map container fixes */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+  min-height: 300px;
+}
+
+/* Fix map display in parent containers */
+.h-96 {
+  height: 24rem !important;
+  position: relative !important;
+}
+
+/* Fix marker icons */
+.leaflet-default-icon-path {
+  background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-icon.png);
+}
+
+.leaflet-default-shadow-path {
+  background-image: url(https://unpkg.com/leaflet@1.9.4/dist/images/marker-shadow.png);
+} 
