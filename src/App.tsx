@@ -7,7 +7,7 @@ import { ContentType, ContentData } from "./types";
 const App: React.FC = () => {
   const [contentType, setContentType] = useState<ContentType>("image");
   const [contentData, setContentData] = useState<ContentData>({
-    src: "https://via.placeholder.com/600x400",
+    src: "https://placehold.co/600x400/EEE/31343C",
   });
 
   const handleContentChange = (type: ContentType, data: ContentData) => {
@@ -24,7 +24,7 @@ const App: React.FC = () => {
         <button
           onClick={() =>
             handleContentChange("image", {
-              src: "https://via.placeholder.com/600x400",
+              src: "https://placehold.co/600x400/EEE/31343C",
             })
           }
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
