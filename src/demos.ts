@@ -84,4 +84,11 @@ export const threeDModelDemos: ContentData[] = [
     modelUrl: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/FlightHelmet/glTF/FlightHelmet.gltf",
     description: "Detailed Flight Helmet model"
   }
+];
+
+export const agentWalletDemos: ContentData[] = [
+  {
+    type: "agent-wallet",
+    walletAddress: "0x1234567890123456789012345678901234567890", // Replace with actual agent wallet address
+  },
 ]; 

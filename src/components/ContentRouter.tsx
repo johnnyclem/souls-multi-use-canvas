@@ -9,6 +9,7 @@ import ChartComponent from "./ChartComponent";
 import PDFComponent from "./PDFComponent";
 import TerminalComponent from "./TerminalComponent";
 import ThreeDModelComponent from "./ThreeDModelComponent";
+import AgentWalletComponent from "./AgentWalletComponent";
 
 interface ContentRouterProps {
   contentType: ContentType;
@@ -33,12 +34,13 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
       return <TerminalComponent data={data} />;
     case "3d-model":
       return <ThreeDModelComponent data={data} />;
+    case "agent-wallet":
+      if (!data.walletAddress) {
+        return <div className="text-red-500">Wallet address is required</div>;
+      }
+      return <AgentWalletComponent walletAddress={data.walletAddress} />;
     default:
-      return (
-        <div className="text-center text-gray-500 p-4">
-          Unsupported content type
-        </div>
-      );
+      return <div className="text-red-500">Unsupported content type: {contentType}</div>;
   }
 };
 

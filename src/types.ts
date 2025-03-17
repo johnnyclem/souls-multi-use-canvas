@@ -8,9 +8,11 @@ export type ContentType =
   | "pdf"
   | "3d-model"
   | "terminal"
-  | "unsupported";
+  | "unsupported"
+  | "agent-wallet";
 
 export interface ContentData {
+  type: ContentType;
   src?: string; // For images, videos, PDFs, etc.
   code?: string; // For code snippets
   language?: string; // For code snippets (e.g., "javascript")
@@ -33,5 +35,6 @@ export interface ContentData {
     customCommands?: Record<string, (args: string[]) => string>;
     prompt?: string;
   }; // For terminal emulator
+  walletAddress?: string;
   [key: string]: any; // Flexible for future content types
 }
