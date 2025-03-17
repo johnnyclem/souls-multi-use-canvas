@@ -1,46 +1,169 @@
-# Getting Started with Create React App
+# Multi-Use Canvas
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A versatile React application that provides a unified interface for displaying various types of content, including images, videos, code snippets, maps, charts, PDFs, terminal emulators, and 3D models.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### Content Types
+- **Images**: Display images with proper scaling and aspect ratio
+- **Videos**: YouTube video player integration
+- **Code**: Syntax-highlighted code snippets
+- **Maps**: Interactive maps with customizable markers
+- **Charts**: Dynamic chart rendering with various chart types
+- **PDFs**: PDF document viewer
+- **Terminal**: Interactive terminal emulator with custom commands
+- **3D Models**: GLTF/GLB model viewer with controls
 
-### `npm start`
+### Terminal Features
+- Basic commands: help, clear, echo, date, whoami, ls, pwd
+- Custom command support
+- Command history
+- Configurable prompt
+- Matrix-style visual effects
+- Progress tracking and error handling
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 3D Model Features
+- GLTF/GLB model loading
+- Orbit controls (rotate, pan, zoom)
+- Auto-centering and scaling
+- Animation support
+- Progress tracking
+- Reference grid
+- Proper lighting setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository:
+```bash
+git clone <repository-url>
+cd multi-use-canvas
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. Install dependencies:
+```bash
+npm install
+```
 
-### `npm run build`
+3. Start the development server:
+```bash
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Dependencies
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- React
+- @react-three/fiber - For 3D rendering
+- @react-three/drei - For 3D controls and utilities
+- @xterm/xterm - For terminal emulation
+- @xterm/addon-fit - For terminal resizing
+- Three.js - For 3D graphics
+- Chart.js - For charts
+- Prism.js - For code syntax highlighting
+- React-PDF - For PDF viewing
+- Leaflet - For maps
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Usage
 
-### `npm run eject`
+### Basic Content Display
+```typescript
+const contentData: ContentData = {
+  type: "image",
+  src: "path/to/image.jpg"
+};
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<ContentRouter contentType="image" data={contentData} />
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Terminal Usage
+```typescript
+const terminalData: ContentData = {
+  type: "terminal",
+  terminalOptions: {
+    initialText: "Welcome to the terminal!",
+    prompt: "custom$ ",
+    customCommands: {
+      greet: (args) => `Hello, ${args[0] || 'World'}!`
+    }
+  }
+};
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<ContentRouter contentType="terminal" data={terminalData} />
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### 3D Model Display
+```typescript
+const modelData: ContentData = {
+  type: "3d-model",
+  modelUrl: "/path/to/model.gltf"
+};
 
-## Learn More
+<ContentRouter contentType="3d-model" data={modelData} />
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Component Structure
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- `ContentRouter`: Main component for routing content types
+- Content-specific components:
+  - `ImageComponent`
+  - `VideoComponent`
+  - `CodeComponent`
+  - `MapComponent`
+  - `ChartComponent`
+  - `PDFComponent`
+  - `TerminalComponent`
+  - `ThreeDModelComponent`
+
+## Development
+
+### Adding New Content Types
+
+1. Update `ContentType` in `types.ts`:
+```typescript
+export type ContentType = "existing-types" | "new-type";
+```
+
+2. Add corresponding data interface in `ContentData`:
+```typescript
+export interface ContentData {
+  // existing fields
+  newTypeSpecificField?: string;
+}
+```
+
+3. Create new component in `components/`:
+```typescript
+const NewTypeComponent: React.FC<{ data: ContentData }> = ({ data }) => {
+  // Implementation
+};
+```
+
+4. Add to `ContentRouter` switch statement:
+```typescript
+case "new-type":
+  return <NewTypeComponent data={data} />;
+```
+
+## Browser Support
+
+- Chrome (recommended for best WebGL support)
+- Firefox
+- Safari
+- Edge
+
+## Known Issues
+
+- Terminal resizing might need manual refresh
+- Some 3D models might need specific scaling adjustments
+- CORS issues might occur with external 3D models
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## License
+
+MIT License - see LICENSE file for details
