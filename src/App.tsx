@@ -21,14 +21,6 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
       <h1 className="text-3xl font-bold mb-6">Multi-Use Canvas</h1>
 
-      {/* Link to full demo page */}
-      <Link
-        to="/demos"
-        className="mb-6 text-blue-600 hover:text-blue-800 underline"
-      >
-        View All Demos →
-      </Link>
-
       {/* Controls for demo */}
       <div className="mb-6 space-x-4 flex flex-wrap gap-2 justify-center">
         <button
