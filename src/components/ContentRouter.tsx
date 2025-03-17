@@ -7,6 +7,8 @@ import CodeComponent from "./CodeComponent";
 import MapComponent from "./MapComponent";
 import ChartComponent from "./ChartComponent";
 import PDFComponent from "./PDFComponent";
+import TerminalComponent from "./TerminalComponent";
+import ThreeDModelComponent from "./ThreeDModelComponent";
 
 interface ContentRouterProps {
   contentType: ContentType;
@@ -27,6 +29,10 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
       return <ChartComponent data={data} />;
     case "pdf":
       return <PDFComponent data={data} />;
+    case "terminal":
+      return <TerminalComponent data={data} />;
+    case "3d-model":
+      return <ThreeDModelComponent data={data} />;
     default:
       return (
         <div className="text-center text-gray-500 p-4">

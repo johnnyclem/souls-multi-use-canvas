@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import "./index.css";
 import ContentRouter from "./components/ContentRouter";
 import { ContentType, ContentData } from "./types";
+import { Link } from "react-router-dom";
+import { terminalDemos, threeDModelDemos } from "./demos";
 
 const App: React.FC = () => {
   const [contentType, setContentType] = useState<ContentType>("image");
@@ -18,6 +20,14 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center py-8">
       <h1 className="text-3xl font-bold mb-6">Multi-Use Canvas</h1>
+
+      {/* Link to full demo page */}
+      <Link
+        to="/demos"
+        className="mb-6 text-blue-600 hover:text-blue-800 underline"
+      >
+        View All Demos →
+      </Link>
 
       {/* Controls for demo */}
       <div className="mb-6 space-x-4 flex flex-wrap gap-2 justify-center">
@@ -94,6 +104,22 @@ const App: React.FC = () => {
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           PDF
+        </button>
+
+        {/* New Terminal Demo Button */}
+        <button
+          onClick={() => handleContentChange("terminal", terminalDemos[0])}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Terminal
+        </button>
+
+        {/* New 3D Model Demo Button */}
+        <button
+          onClick={() => handleContentChange("3d-model", threeDModelDemos[0])}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          3D Model
         </button>
       </div>
 

@@ -7,6 +7,7 @@ export type ContentType =
   | "chart"
   | "pdf"
   | "3d-model"
+  | "terminal"
   | "unsupported";
 
 export interface ContentData {
@@ -27,5 +28,10 @@ export interface ContentData {
     }[];
   }; // For chart
   modelUrl?: string; // For 3D models (GLTF format)
+  terminalOptions?: {
+    initialText?: string;
+    customCommands?: Record<string, (args: string[]) => string>;
+    prompt?: string;
+  }; // For terminal emulator
   [key: string]: any; // Flexible for future content types
 }
