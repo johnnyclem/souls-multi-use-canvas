@@ -90,8 +90,8 @@ export const threeDModelDemos: ContentData[] = [
 export const webContentDemos: ContentData[] = [
   {
     type: "web-content",
-    url: "https://example.com",
-    description: "Example Web Page",
+    url: "https://sou.ls",
+    description: "Souls Web Page",
     contentType: "web"
   },
   {
@@ -99,5 +99,13 @@ export const webContentDemos: ContentData[] = [
     url: "/milkTruck.gltf",
     description: "Interactive 3D Milk Truck Model",
     contentType: "3d"
+  }
+];
+
+// Canvas Demo Examples
+export const canvasDemos: ContentData[] = [
+  {
+    type: "canvas",
+    description: "Infinite Canvas for Drawing and Diagramming"
   }
 ]; 

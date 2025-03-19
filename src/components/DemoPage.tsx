@@ -1,14 +1,16 @@
 // src/components/DemoPage.tsx
 import React, { useState } from 'react';
-import { terminalDemos, threeDModelDemos, webContentDemos } from '../demos';
+import { terminalDemos, threeDModelDemos, webContentDemos, canvasDemos } from '../demos';
 import TerminalComponent from './TerminalComponent';
 import ThreeDModelComponent from './ThreeDModelComponent';
 import WebComponent from './WebComponent';
+import { InfinityCanvas } from './InfinityCanvas';
 
 const DemoPage: React.FC = () => {
   const [selectedTerminalDemo, setSelectedTerminalDemo] = useState(0);
   const [selectedModelDemo, setSelectedModelDemo] = useState(0);
   const [selectedWebDemo, setSelectedWebDemo] = useState(0);
+  const [selectedCanvasDemo, setSelectedCanvasDemo] = useState(0);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -96,6 +98,34 @@ const DemoPage: React.FC = () => {
             type={webContentDemos[selectedWebDemo].contentType || 'web'} 
           />
         )}
+      </section>
+
+      {/* Canvas Demos */}
+      <section className="mt-12">
+        <h2 className="text-2xl font-bold mb-6">Infinite Canvas Demos</h2>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Select Demo:
+          </label>
+          <select
+            className="block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            value={selectedCanvasDemo}
+            onChange={(e) => setSelectedCanvasDemo(Number(e.target.value))}
+          >
+            <option value={0}>Drawing Canvas</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <p className="text-sm text-gray-600 mb-2">
+            {canvasDemos[selectedCanvasDemo].description}
+          </p>
+          <p className="text-sm text-gray-600">
+            Use the toolbar to select different tools: pen, shapes, text, etc.
+          </p>
+        </div>
+        <div style={{ height: "500px", border: "1px solid #e5e7eb" }}>
+          <InfinityCanvas url={canvasDemos[selectedCanvasDemo].url} />
+        </div>
       </section>
     </div>
   );

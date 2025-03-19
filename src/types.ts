@@ -9,6 +9,7 @@ export type ContentType =
   | "3d-model"
   | "terminal"
   | "web-content"
+  | "canvas"
   | "unsupported";
 
 export interface ContentData {
