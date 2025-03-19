@@ -4,7 +4,7 @@ import "./index.css";
 import ContentRouter from "./components/ContentRouter";
 import { ContentType, ContentData } from "./types";
 import { Link } from "react-router-dom";
-import { terminalDemos, threeDModelDemos } from "./demos";
+import { terminalDemos, threeDModelDemos, webContentDemos } from "./demos";
 
 const App: React.FC = () => {
   const [contentType, setContentType] = useState<ContentType>("image");
@@ -112,6 +112,14 @@ const App: React.FC = () => {
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
         >
           3D Model
+        </button>
+
+        {/* New web browser Demo Button */}
+        <button
+          onClick={() => handleContentChange("web-content", webContentDemos[0])}
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+        >
+          Web Browser
         </button>
       </div>
 

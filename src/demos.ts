@@ -71,7 +71,7 @@ export const terminalDemos: ContentData[] = [
 export const threeDModelDemos: ContentData[] = [
   {
     type: "3d-model",
-    modelUrl: "/sample.gltf",
+    modelUrl: "/milkTruck.gltf",
     description: "Basic rotating cube demo"
   },
   {
@@ -83,5 +83,21 @@ export const threeDModelDemos: ContentData[] = [
     type: "3d-model",
     modelUrl: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/FlightHelmet/glTF/FlightHelmet.gltf",
     description: "Detailed Flight Helmet model"
+  }
+];
+
+// Web Content Demo Examples
+export const webContentDemos: ContentData[] = [
+  {
+    type: "web-content",
+    url: "https://example.com",
+    description: "Example Web Page",
+    contentType: "web"
+  },
+  {
+    type: "web-content",
+    url: "/milkTruck.gltf",
+    description: "Interactive 3D Milk Truck Model",
+    contentType: "3d"
   }
 ]; 

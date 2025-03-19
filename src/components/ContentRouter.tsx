@@ -9,6 +9,7 @@ import ChartComponent from "./ChartComponent";
 import PDFComponent from "./PDFComponent";
 import TerminalComponent from "./TerminalComponent";
 import ThreeDModelComponent from "./ThreeDModelComponent";
+import WebComponent from "./WebComponent";
 
 interface ContentRouterProps {
   contentType: ContentType;
@@ -33,6 +34,11 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
       return <TerminalComponent data={data} />;
     case "3d-model":
       return <ThreeDModelComponent data={data} />;
+    case "web-content":
+      if (!data.url) {
+        return <div className="text-center text-gray-500 p-4">No URL provided</div>;
+      }
+      return <WebComponent url={data.url} type={data.contentType || 'web'} />;
     default:
       return (
         <div className="text-center text-gray-500 p-4">

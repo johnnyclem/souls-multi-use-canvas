@@ -142,7 +142,7 @@ const ThreeDModelComponent: React.FC<ThreeDModelComponentProps> = ({ data }) => 
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [loadProgress, setLoadProgress] = useState(0);
-  const modelUrl = data.modelUrl || `${process.env.PUBLIC_URL}/sample.gltf`;
+  const modelUrl = data.modelUrl || `${process.env.PUBLIC_URL}/milkTruck.gltf`;
 
   const handleLoad = () => {
     setIsLoading(false);

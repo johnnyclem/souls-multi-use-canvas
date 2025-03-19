@@ -1,12 +1,14 @@
 // src/components/DemoPage.tsx
 import React, { useState } from 'react';
-import { terminalDemos, threeDModelDemos } from '../demos';
+import { terminalDemos, threeDModelDemos, webContentDemos } from '../demos';
 import TerminalComponent from './TerminalComponent';
 import ThreeDModelComponent from './ThreeDModelComponent';
+import WebComponent from './WebComponent';
 
 const DemoPage: React.FC = () => {
   const [selectedTerminalDemo, setSelectedTerminalDemo] = useState(0);
   const [selectedModelDemo, setSelectedModelDemo] = useState(0);
+  const [selectedWebDemo, setSelectedWebDemo] = useState(0);
 
   return (
     <div className="container mx-auto px-4 py-8">
@@ -63,6 +65,37 @@ const DemoPage: React.FC = () => {
           </p>
         </div>
         <ThreeDModelComponent data={threeDModelDemos[selectedModelDemo]} />
+      </section>
+
+      {/* Web Content Demos */}
+      <section className="mt-12">
+        <h2 className="text-2xl font-bold mb-6">Web Content Demos</h2>
+        <div className="mb-4">
+          <label className="block text-sm font-medium text-gray-700 mb-2">
+            Select Demo:
+          </label>
+          <select
+            className="block w-full max-w-md rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+            value={selectedWebDemo}
+            onChange={(e) => setSelectedWebDemo(Number(e.target.value))}
+          >
+            <option value={0}>Milk Truck 3D Model</option>
+          </select>
+        </div>
+        <div className="mb-4">
+          <p className="text-sm text-gray-600 mb-2">
+            {webContentDemos[selectedWebDemo].description}
+          </p>
+          <p className="text-sm text-gray-600">
+            Use mouse to rotate, scroll to zoom, and right-click to pan
+          </p>
+        </div>
+        {webContentDemos[selectedWebDemo].url && (
+          <WebComponent 
+            url={webContentDemos[selectedWebDemo].url as string} 
+            type={webContentDemos[selectedWebDemo].contentType || 'web'} 
+          />
+        )}
       </section>
     </div>
   );

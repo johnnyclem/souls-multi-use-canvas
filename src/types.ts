@@ -8,6 +8,7 @@ export type ContentType =
   | "pdf"
   | "3d-model"
   | "terminal"
+  | "web-content"
   | "unsupported";
 
 export interface ContentData {
@@ -28,6 +29,8 @@ export interface ContentData {
     }[];
   }; // For chart
   modelUrl?: string; // For 3D models (GLTF format)
+  url?: string; // For web content
+  contentType?: 'web' | '3d'; // For web content type
   terminalOptions?: {
     initialText?: string;
     customCommands?: Record<string, (args: string[]) => string>;
