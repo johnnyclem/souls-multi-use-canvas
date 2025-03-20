@@ -1,45 +1,46 @@
-import { ContentData } from './types';
+import { ContentData, ContentType } from './types';
 
 // Terminal Demo Examples
-export const terminalDemos: ContentData[] = [
+export const terminalDemos: {
+  name: string;
+  contentType: ContentType;
+  contentData: ContentData;
+}[] = [
   {
-    type: "terminal",
-    terminalOptions: {
-      initialText: "Welcome to the Basic Terminal Demo!\nThis is a simple terminal with default commands.",
-      prompt: "demo$ ",
+    name: "Basic Terminal Demo",
+    contentType: "terminal",
+    contentData: {
+      commands: [
+        { input: "echo 'Hello, world!'", output: "Hello, world!" },
+        { input: "ls -la", output: "total 24\ndrwxr-xr-x  5 user group   160 Mar 14 15:30 .\ndrwxr-xr-x  3 user group    96 Mar 14 15:28 ..\n-rw-r--r--  1 user group   127 Mar 14 15:30 index.js\n-rw-r--r--  1 user group 11357 Mar 14 15:29 package-lock.json\n-rw-r--r--  1 user group   284 Mar 14 15:29 package.json" },
+        { input: "node -v", output: "v18.15.0" },
+      ],
+      terminalOptions: {
+        initialText: "Welcome to the Basic Terminal Demo!\nThis is a simple terminal with default commands.",
+        prompt: "demo$ ",
+      }
     }
   },
   {
-    type: "terminal",
-    terminalOptions: {
-      initialText: "Custom Commands Terminal Demo\nTry these custom commands: calc, greet, weather",
-      prompt: "custom$ ",
-      customCommands: {
-        calc: (args) => {
-          try {
-            // Simple calculator that evaluates basic math expressions
-            const expr = args.join(' ');
-            // Using Function instead of eval for better security
-            const result = new Function('return ' + expr)();
-            return `${expr} = ${result}`;
-          } catch (e) {
-            return 'Invalid expression. Try something like: 2 + 2';
+    name: "Git Workflow Demo",
+    contentType: "terminal",
+    contentData: {
+      commands: [
+        { input: "git status", output: "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n        modified:   src/App.tsx\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")" },
+        { input: "git add src/App.tsx", output: "" },
+        { input: "git commit -m 'Update App component'", output: "[main 42a5f21] Update App component\n 1 file changed, 15 insertions(+), 5 deletions(-)" },
+        { input: "git push origin main", output: "Enumerating objects: 7, done.\nCounting objects: 100% (7/7), done.\nDelta compression using up to 10 threads\nCompressing objects: 100% (4/4), done.\nWriting objects: 100% (4/4), 550 bytes | 550.00 KiB/s, done.\nTotal 4 (delta 3), reused 0 (delta 0), pack-reused 0\nremote: Resolving deltas: 100% (3/3), completed with 3 local objects.\nTo github.com:username/repo.git\n   a1b2c3d..42a5f21  main -> main" },
+      ],
+      terminalOptions: {
+        customCommands: {
+          clear: () => "",
+          help: () => "Available commands: clear, help, echo, git",
+          echo: (args: string[]) => args.join(" "),
+          git: (args: string[]) => {
+            if (args[0] === "status") return "On branch main\nYour branch is up to date with 'origin/main'.";
+            if (args[0] === "add") return `Added ${args[1]} to staging area`;
+            return "Unknown git command";
           }
-        },
-        greet: (args) => {
-          const name = args[0] || 'stranger';
-          const time = new Date().getHours();
-          let greeting = '';
-          if (time < 12) greeting = 'Good morning';
-          else if (time < 18) greeting = 'Good afternoon';
-          else greeting = 'Good evening';
-          return `${greeting}, ${name}!`;
-        },
-        weather: (args) => {
-          const conditions = ['sunny', 'rainy', 'cloudy', 'windy', 'snowy'];
-          const temps = [18, 22, 25, 28, 15];
-          const i = Math.floor(Math.random() * conditions.length);
-          return `Current weather: ${conditions[i]} with temperature of ${temps[i]}°C`;
         }
       }
     }

@@ -37,7 +37,7 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
       case "3d-model":
         return <ThreeDModelComponent data={data} />;
       case "canvas":
-        return <InfinityCanvas url={data.url} />;
+        return <InfinityCanvas url={data.url} enableMarkdownSupport={data.enableMarkdownSupport} />;
       case "web-content":
         if (!data.url) {
           return <WebComponent url="https://sou.ls" type={data.contentType || 'web'} />;
