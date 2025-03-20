@@ -53,7 +53,14 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
   };
 
   return (
-    <div className="w-full rounded-lg overflow-hidden bg-card border border-border" style={{ maxHeight: '600px' }}>
+    <div 
+      className={`w-full rounded-lg overflow-hidden bg-card border border-border ${contentType === "canvas" ? "relative" : "flex"}`}
+      style={{ 
+        height: contentType === "canvas" ? "100%" : "auto",
+        minHeight: contentType === "canvas" ? "500px" : "auto",
+        maxHeight: '600px' 
+      }}
+    >
       {renderContent()}
     </div>
   );

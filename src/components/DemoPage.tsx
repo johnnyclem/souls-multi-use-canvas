@@ -22,6 +22,10 @@ const DemoContainer: React.FC<{
 }> = ({ title, demos, description, additionalInfo }) => {
   const [selectedDemo, setSelectedDemo] = useState(0);
   
+  // Use more height for canvas demos
+  const isCanvasDemo = demos[selectedDemo]?.contentType === "canvas";
+  const containerHeight = isCanvasDemo ? '700px' : '500px';
+  
   return (
     <section className="mt-12">
       <h2 className="text-2xl font-bold mb-6">{title}</h2>
@@ -51,7 +55,10 @@ const DemoContainer: React.FC<{
           )}
         </div>
       )}
-      <div className="w-full rounded-lg overflow-hidden border border-border" style={{ height: '500px' }}>
+      <div 
+        className={`w-full rounded-lg overflow-hidden border border-border ${isCanvasDemo ? 'relative' : ''}`}
+        style={{ height: containerHeight }}
+      >
         {demos[selectedDemo] && <ContentRouter 
           contentType={demos[selectedDemo].contentType} 
           data={demos[selectedDemo].contentData} 
