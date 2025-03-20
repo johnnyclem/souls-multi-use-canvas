@@ -46,22 +46,26 @@ export const terminalDemos: {
     }
   },
   {
-    type: "terminal",
-    terminalOptions: {
-      initialText: "Matrix-Style Terminal\nType 'matrix' to start the effect",
-      prompt: "neo@matrix:~$ ",
-      customCommands: {
-        matrix: () => {
-          const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
-          const lines = [];
-          for (let i = 0; i < 10; i++) {
-            let line = '';
-            for (let j = 0; j < 40; j++) {
-              line += chars[Math.floor(Math.random() * chars.length)];
+    name: "Matrix Terminal",
+    contentType: "terminal",
+    contentData: {
+      commands: [],
+      terminalOptions: {
+        initialText: "Matrix-Style Terminal\nType 'matrix' to start the effect",
+        prompt: "neo@matrix:~$ ",
+        customCommands: {
+          matrix: () => {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*';
+            const lines = [];
+            for (let i = 0; i < 10; i++) {
+              let line = '';
+              for (let j = 0; j < 40; j++) {
+                line += chars[Math.floor(Math.random() * chars.length)];
+              }
+              lines.push(line);
             }
-            lines.push(line);
+            return lines.join('\r\n');
           }
-          return lines.join('\r\n');
         }
       }
     }
@@ -69,44 +73,76 @@ export const terminalDemos: {
 ];
 
 // 3D Model Demo Examples
-export const threeDModelDemos: ContentData[] = [
+export const threeDModelDemos: {
+  name: string;
+  contentType: ContentType;
+  contentData: ContentData;
+}[] = [
   {
-    type: "3d-model",
-    modelUrl: "/milkTruck.gltf",
-    description: "Basic rotating cube demo"
+    name: "Basic Cube",
+    contentType: "3d-model",
+    contentData: {
+      modelType: "cube",
+    }
   },
   {
-    type: "3d-model",
-    modelUrl: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/Duck/glTF/Duck.gltf",
-    description: "Classic GLTF Duck model"
+    name: "Basic Sphere",
+    contentType: "3d-model",
+    contentData: {
+      modelType: "sphere",
+    }
   },
   {
-    type: "3d-model",
-    modelUrl: "https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/FlightHelmet/glTF/FlightHelmet.gltf",
-    description: "Detailed Flight Helmet model"
-  }
+    name: "GLTF Robot",
+    contentType: "3d-model",
+    contentData: {
+      modelUrl: "https://cdn.jsdelivr.net/gh/KhronosGroup/glTF-Sample-Models@main/2.0/RobotExpressive/glTF/RobotExpressive.gltf",
+    }
+  },
 ];
 
 // Web Content Demo Examples
-export const webContentDemos: ContentData[] = [
+export const webContentDemos: {
+  name: string;
+  contentType: ContentType;
+  contentData: ContentData;
+}[] = [
   {
-    type: "web-content",
-    url: "https://sou.ls",
-    description: "Souls Web Page",
-    contentType: "web"
+    name: "Simple Website",
+    contentType: "web-content",
+    contentData: {
+      url: "https://example.com",
+    }
   },
   {
-    type: "web-content",
-    url: "/milkTruck.gltf",
-    description: "Interactive 3D Milk Truck Model",
-    contentType: "3d"
-  }
+    name: "Interactive 3D",
+    contentType: "web-content",
+    contentData: {
+      url: "https://threejs.org/examples/#webgl_animation_keyframes",
+      contentType: "3d",
+    }
+  },
 ];
 
 // Canvas Demo Examples
-export const canvasDemos: ContentData[] = [
+export const canvasDemos: {
+  name: string;
+  contentType: ContentType;
+  contentData: ContentData;
+}[] = [
   {
-    type: "canvas",
-    description: "Infinite Canvas for Drawing and Diagramming"
-  }
+    name: "Empty Canvas",
+    contentType: "canvas",
+    contentData: {
+      items: [],
+    }
+  },
+  {
+    name: "Markdown Export/Import Canvas",
+    contentType: "canvas",
+    contentData: {
+      items: [],
+      enableMarkdownSupport: true,
+    }
+  },
 ]; 

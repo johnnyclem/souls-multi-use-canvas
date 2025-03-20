@@ -47,18 +47,6 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app"
-    ],
-    "plugins": [
-      "react"
-    ],
-    "rules": {
-      "react/jsx-uses-react": "off",
-      "react/react-in-jsx-scope": "off"
-    }
-  },
   "browserslist": {
     "production": [
       ">0.2%",
