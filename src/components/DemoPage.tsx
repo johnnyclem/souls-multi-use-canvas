@@ -140,7 +140,9 @@ const DemoPage: React.FC = () => {
               You can draw, add shapes, text, and more on this infinite canvas.
             </p>
           </div>
-          {canvasDemos[0] && <InfinityCanvas url={canvasDemos[0].url} />}
+          <div className="w-full rounded-lg overflow-hidden border border-border" style={{ height: '500px' }}>
+            {canvasDemos[0] && <InfinityCanvas url={canvasDemos[0].url} />}
+          </div>
         </section>
       </div>
     </ThemeProvider>

@@ -8,7 +8,7 @@ interface InfinityCanvasProps {
 
 export const InfinityCanvas: React.FC<InfinityCanvasProps> = ({ url }) => {
   return (
-    <div style={{ width: '100%', height: '100vh' }}>
+    <div className="w-full h-full">
       <Tldraw />
     </div>
   );

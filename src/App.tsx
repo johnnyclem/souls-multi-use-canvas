@@ -118,11 +118,11 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        <div className="w-full max-w-4xl">
+        <div className="w-full max-w-4xl mb-8">
           <ContentRouter contentType={contentType} data={contentData} />
         </div>
 
-        <div className="mt-8">
+        <div className="mt-4">
           <Link to="/demos" className="text-primary hover:underline">
             View all demos →
           </Link>
