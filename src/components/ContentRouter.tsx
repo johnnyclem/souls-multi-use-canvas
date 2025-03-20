@@ -39,7 +39,7 @@ const ContentRouter: React.FC<ContentRouterProps> = ({ contentType, data }) => {
       return <InfinityCanvas url={data.url} />;
     case "web-content":
       if (!data.url) {
-        return <div className="text-center text-gray-500 p-4">No URL provided</div>;
+        return <WebComponent url="https://sou.ls" type={data.contentType || 'web'} />;
       }
       return <WebComponent url={data.url} type={data.contentType || 'web'} />;
     default:

@@ -1,0 +1,15 @@
+{
+    "mcpServers": {
+      "@21st-dev-magic-mcp": {
+        "command": "npx",
+        "args": [
+           "-y",
+          "@smithery/cli@latest",
+          "run",
+          "@21st-dev/magic-mcp",
+          "--config",
+          "\"{\\\"TWENTY_FIRST_API_KEY\\\":\\\"543295dca72f22bf96d7cbe56005e4656fdfab98f2da695f0c42982654bac4da\\\"}\""
+        ]
+      }
+    }
+  }
